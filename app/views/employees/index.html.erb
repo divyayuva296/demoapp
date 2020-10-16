@@ -1,0 +1,7 @@
+<%= link_to 'add employee', new_employee_path %>
+<% @employees.each do |employee| %>
+	<p>
+		<b>Name</b>
+		<%= employee.name %>
+	</p>
+<% end %>

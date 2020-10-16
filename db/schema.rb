@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_050816) do
+ActiveRecord::Schema.define(version: 2020_10_16_112713) do
 
   create_table "account_histories", force: :cascade do |t|
     t.integer "credit_rating"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 2020_10_16_050816) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["supplier_id"], name: "index_accounts_on_supplier_id"
   end
+
+# Could not dump table "animals" because of following StandardError
+#   Unknown type 'password' for column 'password'
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "appointment_date"
@@ -51,12 +54,10 @@ ActiveRecord::Schema.define(version: 2020_10_16_050816) do
 # Could not dump table "details" because of following StandardError
 #   Unknown type 'email' for column 'email'
 
-  create_table "information", force: :cascade do |t|
+  create_table "employees", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_information_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -80,12 +81,26 @@ ActiveRecord::Schema.define(version: 2020_10_16_050816) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "imageable_id"
+    t.string "imageable_type"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -113,7 +128,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_050816) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "details", "users"
-  add_foreign_key "information", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"

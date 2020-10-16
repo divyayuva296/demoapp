@@ -18,8 +18,12 @@ Rails.application.routes.draw do
   resources :patients
   resources :appointments
   resources :details
-  resources :users do 
-    resources :informations
-  end
+   
+  resources :animals
+
+  resources :employees
+  resources :products
+  resources :pictures
+
 
 end

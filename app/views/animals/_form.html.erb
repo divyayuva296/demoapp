@@ -1,0 +1,20 @@
+<%= simple_form_for @animal do |f| %>
+	<%= f.input :name ,label: "Name",error: "name is mandatory",hint: "firts word capital letter",required: false%>
+	<%= f.input :password,placeholder: "********" %>
+	<%#= f.input_field :remember_me, as: :boolean,boolean_style: :inline %>
+	<%= f.input :desctription , as: :text%>
+	<%= f.input :accepts , as: :boolean, checked_value: true, unchecked_value: false %>
+	<%= f.label :date %>
+	<%= f.hint "enter date " %>
+	<%= f.date_field :date, as: :date %><br>
+	<%#= f.input :age, collection: 1..10 %>
+	<%#= f.input :age, as: :radio_buttons,collection: [['0','child'],['1','adult'],['3','old']],label_method: :second,value_method: :first %>
+	<!-- <%#= f.collection_radio_buttons :age, [[true, 'Yes'], [false, 'No']], :first, :last%><br> -->
+	  <%= f.collection_check_boxes :age, [[true, 'Yes'], [false, 'No']], :first, :last%>
+	<%= f.submit %>
+<% end %>
+<%#= f.input :age, as: :radio_buttons, collection: [['0', 'female'], ['1', 'male']], label_method: :second, value_method: :first %>
+<%#= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12, discard_day: true,
+                              order: [:month, :year] %>
+  <%#= f.input :accepts, as: :boolean, checked_value: true, unchecked_value: false %>
