@@ -1,0 +1,16 @@
+<%= form_for @appointment do |f| %>
+<p>
+  <%= f.date_field :appointment_date %>
+</p>
+<p>
+  <%= f.collection_select :physician_id, Physician.all, :id, :name, :selected => params[:physician_id] %>
+ 
+</p>
+<p>
+  <%= f.collection_select :patient_id, Patient.all, :id, :name,:selected => params[:patient_id] %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+

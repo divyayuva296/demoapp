@@ -1,0 +1,28 @@
+<h1>User Detail</h1>
+<%= link_to 'new', new_detail_path %>
+<% @details.each do |detail| %>
+<%# byebug %>
+	<p>
+		<%= detail.name %><br>
+		<%= detail.hobbies %> <br>
+		<%= detail.gender %><br>
+		<%= detail.mobile %><br>
+		<%= detail.birthday %><br>
+		<%= detail.graduation %><br>
+		<%= detail.month %><br>
+		<%= detail.week %><br>
+		<%= detail.email %><br>
+		<%= detail.number %><br>
+		<%= detail.range %><br>
+		<%= detail.city_id %><br>
+		<%= detail.message %><br>
+
+
+		<%# byebug%>
+	</p>
+	<p>
+		<%= link_to 'show',detail_path(detail) %>
+		<%= link_to 'edit', edit_detail_path(detail) %>
+		<%= link_to 'destroy',detail_path(detail), method: :delete %>
+	</p>
+<% end %>

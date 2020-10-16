@@ -1,0 +1,22 @@
+<p>
+	<strong>Name:</strong>
+	<%= @supplier.name %>
+
+	<% @account = @supplier.account %>
+	<%# byebug %>
+	<%= @account.account_number %>
+</p>
+
+<h1>Add Account_histrory</h1>
+<%#= render 'account_histories/form' %>
+<%= form_with model: @acccount_history  do |form| %>
+<% byebug %>
+	<%= form.label :credit_rating %>
+	<%= form.text_field :credit_rating %>
+	<%= form.hidden_field :account_id %>
+
+	<%= form.submit %>
+<% end %>
+
+
+<%= link_to 'back', suppliers_path %>

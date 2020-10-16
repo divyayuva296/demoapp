@@ -1,0 +1,8 @@
+<%  if current_user.present? %>
+<% byebug %>
+	<%= simple_form_for [@user,@user.informations.build] do |f| %>
+  	<%= f.input :name %>
+  	
+  	<%= f.button :submit %>
+<% end %>
+<% end %>

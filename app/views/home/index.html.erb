@@ -1,0 +1,14 @@
+<h1>Hello welcome!</h1>
+<% if user_signed_in? %>
+  <%= link_to  'logout', destroy_user_session_path, method: :delete %>
+  <%= link_to 'create post', posts_path %>
+
+<% else %>
+  <%= link_to 'signup',new_user_registration_path %>
+  <%= link_to 'lohin', new_user_session_path %>
+<% end %>
+
+<%= image_tag "image.jpg" ,width: 300 ,height:200 %>
+
+<%= link_to 'detail', details_path %>
+<%= link_to 'information',new_user_information_path(current_user.id) %>

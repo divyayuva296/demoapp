@@ -1,0 +1,14 @@
+<%= link_to 'new Account', new_supplier_path %>
+<% @suppliers.each do |supplier| %>
+	<div>
+		<%= supplier.name %>
+		<% account = supplier.account %>
+		<%= account.account_number %>
+	</div>
+	<div>
+		<%= link_to 'show', supplier_path(supplier)%>
+		<%= link_to 'edit' , edit_supplier_path(supplier) %>
+		<%= link_to  'delete', supplier_path(supplier), method: :delete %>
+	</div>
+
+<% end %>

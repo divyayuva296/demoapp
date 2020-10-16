@@ -1,0 +1,138 @@
+<%= form_with model: @detail do |form| %>
+	<p>
+		<%= form.label :name %>
+		<%= form.text_field :name %>
+	</p>
+	<p>
+		<%= form.label :hobbies ,"Hobbies:" %><br>
+			<% hobbies = ['singing','dancing','art $ craft'] %>
+			<% hobbies.each do |hobby| %>
+				<%= form.check_box :hobbies, {multiple: true, checked: @detail.new_record? ? "nothing" : @detail.hobbies.include?(hobby)}, hobby,false %>
+				<%= hobby %><br>
+			<% end %>	 
+	</p>
+	<p>
+		<%= form.label :gender ,"male"%>
+		<%= form.radio_button :gender, "male" %>
+		<%= form.label :gender, "female" %>
+		<%= form.radio_button :gender, "female" %>
+		<%= form.label :gender, "other" %>
+		<%= form.radio_button :gender, "other" %>
+	</p>
+	<p>
+		<%= form.label :mobile %>
+		<%= form.telephone_field :mobile %>
+	</p>
+	<p>
+		<%= form.label :birthday, "birthday with time" %>
+		<%= form.datetime_local_field :birthday %>
+	</p>
+	<p>
+		<%= form.label :graduation %>
+		<%= form.date_field  :graduation %>
+	</p>
+	<p>
+		<%= form.label :month %>
+		<%= form.month_field :month %>
+	</p>
+	<p>
+		<%= form.label :week %>
+		<%= form.week_field :week %>
+	</p>
+	<p>
+		<%#= form.label :url %>
+		<%#= form.url_field :url %>
+	</p>
+	<p>
+		<%= form.label :email %>
+		<%= form.email_field :email %>
+	</p>
+	<p>
+		<%#= form.label :color %>
+		<%#= form.color_field :color %>
+	</p>
+	<p>
+		<%#= form.label :time %>
+		<%#= form.time_field :time %>
+	</p>
+	<p>
+		<%= form.label :number %>
+		<%= form.number_field :number,size: "10" ,step: "2"%>
+	<p>
+		<p>
+			<%= form.label :range %>
+			<%= form.range_field :range,in: 0..20,step: '2' %>
+		</p>
+		<%= form.label :message %>
+		<%= form.text_area :message %>
+	</p>
+	<p>
+		<%= form.label :city_id, "select city" %>
+		<%#= form.select :city_id,options_for_select([['indore',1],['bhopal',2],['ujjain',3]]) %>
+		<%#= form.select(:city_id) do %>
+			<%#[['jaipur',1],['ajmer',2],['gurgaon',3]].each do |c| %>
+				<%#= content_tag(:option,c.first,value: c.last) %>
+			<%# end %>
+		<%# end %>
+		<% cities_array = ['indore','ujjain','bhopal','guna'].map {|city| [city]}%>
+		<%= form.select :city_id,options_for_select(cities_array) %>
+
+
+	</p>
+	<p>
+		
+		<%= time_zone_select(:person, :time_zone) %><br>
+		<%= date_select(:person, :date) %><br>
+		<%= time_select(:person,:time) %><br>
+		<%= datetime_select(:person,:datetime) %><br>
+		<%= select_date Date.today, prefix: :start_date %>
+	</p>
+	<p>
+		
+		<%= form_with(url: details_path, multipart: true) do %>
+  		<%= file_field_tag 'picture' %>
+		<% end %>
+ 
+		<%= form_with model: @detail do |f| %>
+  		<%= f.file_field :picture %>
+		<% end %>
+
+	</p>
+	<p>
+		<%= form.hidden_field :user_id , value: current_user.id %>
+	</p>
+	<p>
+		<%#= select_tag(:city_id, raw('<option value="1">Lisbon</option><option value="2">Madrid</option><option value="3">Berlin</option>')) %>
+		<%= select_tag :city, options_for_select([['Lisbon', 1], ['Madrid', 2], ['Berlin', 3]],2) %>
+		<%= select_tag :city, options_for_select(
+			[
+				['Indore',1,{'data-size' => '2.8 million'}],
+				['Bhopal',2,{'data-size' => '3.2 million'}],
+				['Ujjain',3,{'data-size' => '3.4 million'}]
+			],2)%>
+	</p>
+	
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>
+<!-- checked: @detail.include?('singing') -->
+
+<%#= check_box("tag", tag.id, {checked: true}) %>
+<!-- <%#=form.label :hobbies ,"Singing"%> -->
+		 <!-- <%#=form.check_box("hobbies", {multiple: true,checked: false },"singing",nil)%><br>  -->
+		<!-- <%#= form.check_box(:hobbies, :value => ["singing"], checked: false, options: {multiple: true}) %><br> -->
+
+		<%#byebug %>
+		<%#= form.label :hobbies , "playing"%>
+		<!-- <%#= form.check_box :hobbies ,{multiple: true, checked: @detail.hobbies},"playing",nil%><br> -->
+		<%#= form.label :hobbies, "DAncing"%>
+		<!-- <%#= form.check_box :hobbies ,{multiple: true, checked: @detail.hobbies}, "dancing",nil %><br> -->
+
+		<%#= form.check_box("puppy", "commands", {:multiple => true}, "sit", nil) %>
+
+
+		<%# ["singing","playing","damcing"].each do |hobby|%>
+		<%# byebug %>
+			<%#= check_box_tag "detail[hobbies][]",hobby,@detail.hobbies.include?(hobby),id:"detail_hobbies_#{hobby} " %><%#= hobby %>
+			<%# end %>

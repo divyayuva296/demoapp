@@ -1,0 +1,21 @@
+<%= form_with model: @supplier ,local: true do |form| %>
+	<p>
+		<%= form.label :name %>
+		<%= form.text_field :name %>
+	</p>	
+	<p>
+		<%= form.fields_for :account, @supplier.account do  |account| %>
+			<%#= account.label :account %>
+			<%#= account.text_field :account %>
+			<%= render '/accounts/form', form: account %>
+			<%#byebug %>
+		<% end %>
+	</p>
+<!-- 
+<p><%#= form.link_to_add "Add a account", :account %></p> -->
+
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>
+   <%#= render :partial=> '/partials/answer_fields', :f => builder %>

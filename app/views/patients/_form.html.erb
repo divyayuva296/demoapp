@@ -1,0 +1,31 @@
+<%= form_with model: @patient ,local: true do |form| %>
+<p>
+	<%= form.label :name %>
+	<%= form.text_field :name %>
+</p>
+<p>
+	
+	<%#= form.fields_for :appointments do |appointment_form| %>
+	<!-- <p> -->
+	
+		<%#= appointment_form.label :appointment_date %>
+		<%#= appointment_form.date_field :appointment_date %>
+	<!-- </p> -->
+		
+	<%# end %>
+	<%#= form.fields_for :physician  do |physician_form| %>
+	<%# byebug %>
+	<!-- <p> -->
+		<%#= physician_form.label :" Physician Name" %>
+		<%#= physician_form.collection_select(:physician_id, Physician.all, :id,:name, :selected => params[:physician_id]) %>
+	<!-- </p> -->
+	<!-- <%# end %> -->
+	<%#= form.collection_check_boxes :physician_ids, Physician.all, :id, :name %>
+</p>
+<p>
+	<%= form.submit %>
+</p>
+<% end %>
+ <%#= f.collection_select :patient_id, Patient.all, :id, :name,:selected => params[:patient_id] %>
+
+ 

@@ -1,0 +1,14 @@
+<%= link_to 'Patients', new_patient_path %>
+<% @patients.each do |patient| %>
+	<div>
+		<%= patient.name %>
+		<%# byebug %>
+		
+	</div>
+	<div>
+		<%= link_to 'show', patient_path(patient)%>
+		<%= link_to 'edit' , edit_patient_path(patient) %>
+		<%= link_to  'delete', patient_path(patient), method: :delete %>
+	</div>
+
+<% end %>
