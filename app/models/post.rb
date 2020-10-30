@@ -3,6 +3,12 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+   has_rich_text :content
+
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
+    byebug
+  end
   # def self.search(search)
   
   # 	if search

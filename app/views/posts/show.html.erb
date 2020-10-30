@@ -1,6 +1,7 @@
 <p>
 	<strong>Title:</strong>
 	<%= @post.title %>
+	<%= @post.content %>
 	<div><%= button_to 'Like', post_likes_path(@post), method: :post %>
 	
 	<%= button_to 'dislike', post_like_path(@post), method: :delete %>
@@ -15,3 +16,4 @@
 
 <h1>Add comment</h1>
 <%= render 'comments/form' %>
+<%= link_to 'back', posts_path %>

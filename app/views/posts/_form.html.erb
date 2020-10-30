@@ -1,3 +1,5 @@
+
+
 <% current_user.present? %>
 <%= form_with(model: [@post] , local: true) do |form| %>
 <%# byebug %>
@@ -6,9 +8,28 @@
 	<%= form.text_field :title %>
 </p>
 <p>
+	<%= form.label :content,placehodler: "you can insert images also" %>
+	<%= form.rich_text_area :content %>
+</p>
+<p>
 	<%= form.hidden_field :user_id %>
 </p>
 <p>
 	<%= form.submit %>
 </p>
 <% end %>
+
+
+<!-- <head>
+  …
+  <link rel="stylesheet" type="text/css" href="trix.css">
+  <script type="text/javascript" src="trix.js"></script>
+</head>
+<body>
+	<form>
+		<input id = "x" type = "hidden" name = "content">
+
+		<trix-editor input = "x"></trix-editor><br>
+		<textarea></textarea>
+	</form>
+</body> -->
